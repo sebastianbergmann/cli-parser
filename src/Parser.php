@@ -13,9 +13,13 @@ use function array_map;
 use function array_merge;
 use function array_shift;
 use function array_slice;
+use function assert;
 use function count;
 use function current;
 use function explode;
+use function is_array;
+use function is_int;
+use function is_string;
 use function key;
 use function next;
 use function preg_replace;
@@ -29,6 +33,9 @@ use function substr;
 final class Parser
 {
     /**
+     * @psalm-param list<string> $argv
+     * @psalm-param list<string> $longOptions
+     *
      * @throws AmbiguousOptionException
      * @throws RequiredOptionArgumentMissingException
      * @throws OptionDoesNotAllowArgumentException
@@ -57,6 +64,9 @@ final class Parser
 
         while (false !== $arg = current($argv)) {
             $i = key($argv);
+
+            assert(is_int($i));
+
             next($argv);
 
             if ($arg === '') {
@@ -75,7 +85,7 @@ final class Parser
                 continue;
             }
 
-            if (strlen($arg) > 1 && $arg[1] === '-') {
+            if (strlen($arg) > 1 && $arg[1] === '-' && is_array($longOptions)) {
                 $this->parseLongOption(
                     substr($arg, 2),
                     $longOptions,
@@ -110,6 +120,8 @@ final class Parser
                 throw new UnknownOptionException('-' . $option);
             }
 
+            assert(is_string($spec));
+
             if (strlen($spec) > 1 && $spec[1] === ':') {
                 if ($i + 1 < $argLength) {
                     $opts[] = [$option, substr($arg, $i + 1)];
@@ -118,9 +130,13 @@ final class Parser
                 }
 
                 if (!(strlen($spec) > 2 && $spec[2] === ':')) {
-                    if (false === $optionArgument = current($args)) {
+                    $optionArgument = current($args);
+
+                    if (!$optionArgument) {
                         throw new RequiredOptionArgumentMissingException('-' . $option);
                     }
+
+                    assert(is_string($optionArgument));
 
                     next($args);
                 }
@@ -131,6 +147,8 @@ final class Parser
     }
 
     /**
+     * @psalm-param list<string> $longOptions
+     *
      * @throws AmbiguousOptionException
      * @throws RequiredOptionArgumentMissingException
      * @throws OptionDoesNotAllowArgumentException
