@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="3.13.1@afd8874a9e4562eac42a02de90e42e430c3a1db1">
+  <file src="src/Parser.php">
+    <InvalidOperand occurrences="3">
+      <code>$i</code>
+      <code>$i</code>
+      <code>$i</code>
+    </InvalidOperand>
+    <MixedArgument occurrences="6">
+      <code>$args</code>
+      <code>$i + 1</code>
+      <code>$spec</code>
+      <code>$spec</code>
+      <code>$long_opt</code>
+      <code>$long_options[$i + 1]</code>
+    </MixedArgument>
+    <MixedArrayAccess occurrences="2">
+      <code>$spec[1]</code>
+      <code>$spec[2]</code>
+    </MixedArrayAccess>
+    <MixedArrayOffset occurrences="1">
+      <code>$long_options[$i + 1]</code>
+    </MixedArrayOffset>
+    <MixedAssignment occurrences="4">
+      <code>$arg</code>
+      <code>$opt_arg</code>
+      <code>$long_opt</code>
+      <code>$opt_arg</code>
+    </MixedAssignment>
+    <PossiblyNullArgument occurrences="1">
+      <code>$long_options</code>
+    </PossiblyNullArgument>
+  </file>
+</files>
