@@ -55,7 +55,6 @@ final class Parser
 
         $args = array_map('trim', $args);
 
-        /* @noinspection ComparisonOperandsOrderInspection */
         while (false !== $arg = current($args)) {
             $i = key($args);
             next($args);
@@ -119,7 +118,6 @@ final class Parser
                 }
 
                 if (!(strlen($spec) > 2 && $spec[2] === ':')) {
-                    /* @noinspection ComparisonOperandsOrderInspection */
                     if (false === $opt_arg = current($args)) {
                         throw new RequiredOptionArgumentMissingException('-' . $opt);
                     }
@@ -167,7 +165,6 @@ final class Parser
             if (substr($long_opt, -1) === '=') {
                 /* @noinspection StrlenInEmptyStringCheckContextInspection */
                 if (substr($long_opt, -2) !== '==' && !strlen((string) $opt_arg)) {
-                    /* @noinspection ComparisonOperandsOrderInspection */
                     if (false === $opt_arg = current($args)) {
                         throw new RequiredOptionArgumentMissingException('--' . $opt);
                     }
