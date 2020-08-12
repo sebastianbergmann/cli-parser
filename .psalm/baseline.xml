@@ -7,28 +7,18 @@
       <code>$i</code>
     </InvalidOperand>
     <MixedArgument occurrences="6">
-      <code>$args</code>
       <code>$i + 1</code>
       <code>$spec</code>
       <code>$spec</code>
-      <code>$long_opt</code>
-      <code>$long_options[$i + 1]</code>
     </MixedArgument>
     <MixedArrayAccess occurrences="2">
       <code>$spec[1]</code>
       <code>$spec[2]</code>
     </MixedArrayAccess>
-    <MixedArrayOffset occurrences="1">
-      <code>$long_options[$i + 1]</code>
-    </MixedArrayOffset>
+    <MixedArrayOffset occurrences="1"/>
     <MixedAssignment occurrences="4">
       <code>$arg</code>
-      <code>$opt_arg</code>
-      <code>$long_opt</code>
-      <code>$opt_arg</code>
     </MixedAssignment>
-    <PossiblyNullArgument occurrences="1">
-      <code>$long_options</code>
-    </PossiblyNullArgument>
+    <PossiblyNullArgument occurrences="1"/>
   </file>
 </files>
