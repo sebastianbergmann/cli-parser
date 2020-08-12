@@ -1,5 +1,5 @@
 {
-    "name": "sebastian/code-unit",
+    "name": "sebastian/cli-parser",
     "description": "Library for parsing CLI options",
     "type": "library",
     "homepage": "https://github.com/sebastianbergmann/cli-parser",
