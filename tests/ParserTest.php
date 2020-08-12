@@ -167,6 +167,20 @@ final class ParserTest extends TestCase
         );
     }
 
+    public function testReturnsEmptyResultWhenNotOptionsArePassed(): void
+    {
+        $this->assertSame(
+            [
+                [],
+                [],
+            ],
+            (new Parser)->parse(
+                [],
+                'v'
+            )
+        );
+    }
+
     public function testRaisesAnExceptionForUnknownLongOption(): void
     {
         $this->expectException(UnknownOptionException::class);
