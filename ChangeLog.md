@@ -6,4 +6,4 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial release
 
-[1.0.0]: https://github.com/sebastianbergmann/code-unit/compare/bb7bb3297957927962b0a3335befe7b66f7462e9...master
+[1.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/bb7bb3297957927962b0a3335befe7b66f7462e9...master
