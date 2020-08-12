@@ -9,6 +9,8 @@
  */
 namespace SebastianBergmann\CliParser;
 
-interface Exception
+use Throwable;
+
+interface Exception extends Throwable
 {
 }
