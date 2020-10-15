@@ -194,7 +194,7 @@ final class Parser
                 throw new OptionDoesNotAllowArgumentException('--' . $option);
             }
 
-            $fullOption = '--' . preg_replace('/={1,2}$/', '', $longOption);
+            $fullOption    = '--' . preg_replace('/={1,2}$/', '', $longOption);
             $options[]     = [$fullOption, $optionArgument];
 
             return;
