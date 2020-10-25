@@ -121,8 +121,6 @@ final class Parser
                 throw new UnknownOptionException('-' . $option);
             }
 
-            assert(is_string($spec));
-
             if (strlen($spec) > 1 && $spec[1] === ':') {
                 if ($i + 1 < $argumentLength) {
                     $options[] = [$option, substr($argument, $i + 1)];
