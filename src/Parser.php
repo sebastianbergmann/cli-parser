@@ -38,8 +38,8 @@ final class Parser
      * @psalm-return array{0: array, 1: array}
      *
      * @throws AmbiguousOptionException
-     * @throws RequiredOptionArgumentMissingException
      * @throws OptionDoesNotAllowArgumentException
+     * @throws RequiredOptionArgumentMissingException
      * @throws UnknownOptionException
      */
     public function parse(array $argv, string $shortOptions, array $longOptions = null): array
@@ -48,8 +48,8 @@ final class Parser
             return [[], []];
         }
 
-        $options     = [];
-        $nonOptions  = [];
+        $options    = [];
+        $nonOptions = [];
 
         if ($longOptions) {
             sort($longOptions);
@@ -149,8 +149,8 @@ final class Parser
      * @psalm-param list<string> $longOptions
      *
      * @throws AmbiguousOptionException
-     * @throws RequiredOptionArgumentMissingException
      * @throws OptionDoesNotAllowArgumentException
+     * @throws RequiredOptionArgumentMissingException
      * @throws UnknownOptionException
      */
     private function parseLongOption(string $argument, array $longOptions, array &$options, array &$argv): void
@@ -192,8 +192,8 @@ final class Parser
                 throw new OptionDoesNotAllowArgumentException('--' . $option);
             }
 
-            $fullOption    = '--' . preg_replace('/={1,2}$/', '', $longOption);
-            $options[]     = [$fullOption, $optionArgument];
+            $fullOption = '--' . preg_replace('/={1,2}$/', '', $longOption);
+            $options[]  = [$fullOption, $optionArgument];
 
             return;
         }

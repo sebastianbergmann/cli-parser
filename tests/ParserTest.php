@@ -12,9 +12,9 @@ namespace SebastianBergmann\CliParser;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \SebastianBergmann\CliParser\Parser
  * @covers \SebastianBergmann\CliParser\AmbiguousOptionException
  * @covers \SebastianBergmann\CliParser\OptionDoesNotAllowArgumentException
+ * @covers \SebastianBergmann\CliParser\Parser
  * @covers \SebastianBergmann\CliParser\RequiredOptionArgumentMissingException
  * @covers \SebastianBergmann\CliParser\UnknownOptionException
  */
