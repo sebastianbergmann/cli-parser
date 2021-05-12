@@ -25,8 +25,9 @@ use function next;
 use function preg_replace;
 use function reset;
 use function sort;
+use function str_ends_with;
+use function str_starts_with;
 use function strlen;
-use function strpos;
 use function strstr;
 use function substr;
 
@@ -175,13 +176,13 @@ final class Parser
 
             $opt_rest = substr($longOption, $optionLength);
 
-            if ($opt_rest !== '' && $i + 1 < $count && $option[0] !== '=' && strpos($longOptions[$i + 1], $option) === 0) {
+            if ($opt_rest !== '' && $i + 1 < $count && $option[0] !== '=' && str_starts_with($longOptions[$i + 1], $option)) {
                 throw new AmbiguousOptionException('--' . $option);
             }
 
-            if (substr($longOption, -1) === '=') {
+            if (str_ends_with($longOption, '=')) {
                 /* @noinspection StrlenInEmptyStringCheckContextInspection */
-                if (substr($longOption, -2) !== '==' && !strlen((string) $optionArgument)) {
+                if (!str_ends_with($longOption, '==') && !strlen((string) $optionArgument)) {
                     if (false === $optionArgument = current($argv)) {
                         throw new RequiredOptionArgumentMissingException('--' . $option);
                     }
