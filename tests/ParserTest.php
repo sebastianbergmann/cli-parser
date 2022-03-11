@@ -80,7 +80,7 @@ final class ParserTest extends TestCase
         );
     }
 
-    public function testParsesShortongOptionsWithValues(): void
+    public function testParsesShortOptionsWithValues(): void
     {
         $this->assertSame(
             [
