@@ -36,6 +36,7 @@ final class Parser
     /**
      * @psalm-param list<string> $argv
      * @psalm-param list<string> $longOptions
+     *
      * @psalm-return array{0: array, 1: array}
      *
      * @throws AmbiguousOptionException
