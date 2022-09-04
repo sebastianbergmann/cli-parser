@@ -72,7 +72,7 @@ jobs:
           php-version: "${{ matrix.php-version }}"
           coverage: "pcov"
 
-      - name: "Cache dependencies installed with composer"
+      - name: "Cache dependencies installed with Composer"
         uses: "actions/cache@v2"
         with:
           path: "~/.composer/cache"
