@@ -95,14 +95,16 @@ final class Parser
                     $options,
                     $argv
                 );
-            } else {
-                $this->parseShortOption(
-                    substr($arg, 1),
-                    $shortOptions,
-                    $options,
-                    $argv
-                );
+
+                continue;
             }
+
+            $this->parseShortOption(
+                substr($arg, 1),
+                $shortOptions,
+                $options,
+                $argv
+            );
         }
 
         return [$options, $nonOptions];
