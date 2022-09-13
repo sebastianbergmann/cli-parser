@@ -182,7 +182,6 @@ final class Parser
             }
 
             if (str_ends_with($longOption, '=')) {
-                /* @noinspection StrlenInEmptyStringCheckContextInspection */
                 if (!str_ends_with($longOption, '==') && !strlen((string) $optionArgument)) {
                     if (false === $optionArgument = current($argv)) {
                         throw new RequiredOptionArgumentMissingException('--' . $option);

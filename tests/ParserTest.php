@@ -185,7 +185,6 @@ final class ParserTest extends TestCase
         $this->expectException(UnknownOptionException::class);
         $this->expectExceptionMessage('Unknown option "--foo"');
 
-        /* @noinspection UnusedFunctionResultInspection */
         (new Parser)->parse(
             [
                 'command',
@@ -201,7 +200,6 @@ final class ParserTest extends TestCase
         $this->expectException(UnknownOptionException::class);
         $this->expectExceptionMessage('Unknown option "-v"');
 
-        /* @noinspection UnusedFunctionResultInspection */
         (new Parser)->parse(
             [
                 'command',
@@ -217,7 +215,6 @@ final class ParserTest extends TestCase
         $this->expectException(RequiredOptionArgumentMissingException::class);
         $this->expectExceptionMessage('Required argument for option "--foo" is missing');
 
-        /* @noinspection UnusedFunctionResultInspection */
         (new Parser)->parse(
             [
                 'command',
@@ -233,7 +230,6 @@ final class ParserTest extends TestCase
         $this->expectException(RequiredOptionArgumentMissingException::class);
         $this->expectExceptionMessage('Required argument for option "-f" is missing');
 
-        /* @noinspection UnusedFunctionResultInspection */
         (new Parser)->parse(
             [
                 'command',
@@ -249,7 +245,6 @@ final class ParserTest extends TestCase
         $this->expectException(AmbiguousOptionException::class);
         $this->expectExceptionMessage('Option "--col" is ambiguous');
 
-        /* @noinspection UnusedFunctionResultInspection */
         (new Parser)->parse(
             [
                 'command',
@@ -265,7 +260,6 @@ final class ParserTest extends TestCase
         $this->expectException(OptionDoesNotAllowArgumentException::class);
         $this->expectExceptionMessage('Option "--foo" does not allow an argument');
 
-        /* @noinspection UnusedFunctionResultInspection */
         (new Parser)->parse(
             [
                 'command',
