@@ -1,22 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.0.1@b1e2e30026936ef8d5bf6a354d1c3959b6231f44">
-  <file src="src/Parser.php">
-    <MixedArgument occurrences="4">
-      <code>$arg</code>
-      <code>$arg</code>
-      <code>$arg</code>
-      <code>$arg</code>
-    </MixedArgument>
-    <MixedArrayAccess occurrences="3">
-      <code>$arg[0]</code>
-      <code>$arg[1]</code>
-      <code>$arg[1]</code>
-    </MixedArrayAccess>
-    <MixedAssignment occurrences="4">
-      <code>$arg</code>
-      <code>$nonOptions[]</code>
-      <code>$optionArgument</code>
-      <code>$optionArgument</code>
-    </MixedAssignment>
-  </file>
-</files>
+<files psalm-version="4.x-dev@"/>
