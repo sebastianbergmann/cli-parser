@@ -2,7 +2,7 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
-## [2.0.0] - 2022-MM-DD
+## [2.0.0] - 2023-02-03
 
 ### Removed
 
@@ -18,6 +18,6 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial release
 
-[2.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/1.0.1...master
+[2.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/1.0.1...main
 [1.0.1]: https://github.com/sebastianbergmann/cli-parser/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/bb7bb3297957927962b0a3335befe7b66f7462e9...1.0.0
