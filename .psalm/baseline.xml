@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="dev-master@"/>
+<files psalm-version="5.7.1@8e0fd880141f236847ab49a06f94f788d41a4292">
+  <file src="src/Parser.php">
+    <RedundantCondition>
+      <code>is_array($longOptions)</code>
+      <code><![CDATA[strlen($arg) > 1 && $arg[1] === '-' && is_array($longOptions)]]></code>
+    </RedundantCondition>
+  </file>
+</files>
