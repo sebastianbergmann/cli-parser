@@ -12,7 +12,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/sebastianbergmann/cli-parser/issues"
+        "issues": "https://github.com/sebastianbergmann/cli-parser/issues",
+        "security": "https://github.com/sebastianbergmann/cli-parser/security/policy"
     },
     "prefer-stable": true,
     "require": {
