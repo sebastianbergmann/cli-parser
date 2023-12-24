@@ -93,7 +93,7 @@ final class Parser
                     substr($arg, 2),
                     $longOptions,
                     $options,
-                    $argv
+                    $argv,
                 );
 
                 continue;
@@ -103,7 +103,7 @@ final class Parser
                 substr($arg, 1),
                 $shortOptions,
                 $options,
-                $argv
+                $argv,
             );
         }
 
