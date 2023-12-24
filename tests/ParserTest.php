@@ -39,8 +39,8 @@ final class ParserTest extends TestCase
                     'myArgument',
                     '-f',
                 ],
-                'f::'
-            )
+                'f::',
+            ),
         );
     }
 
@@ -75,8 +75,8 @@ final class ParserTest extends TestCase
                     'parameter-n',
                 ],
                 '',
-                ['exec', 'conf=', 'optn==']
-            )
+                ['exec', 'conf=', 'optn=='],
+            ),
         );
     }
 
@@ -110,8 +110,8 @@ final class ParserTest extends TestCase
                     '-ocontent-of-o',
                     'parameter-n',
                 ],
-                'xc:o::'
-            )
+                'xc:o::',
+            ),
         );
     }
 
@@ -136,8 +136,8 @@ final class ParserTest extends TestCase
                     '--colors',
                 ],
                 '',
-                ['colors==']
-            )
+                ['colors=='],
+            ),
         );
     }
 
@@ -161,8 +161,8 @@ final class ParserTest extends TestCase
                     'myArgument',
                     '-v',
                 ],
-                'v'
-            )
+                'v',
+            ),
         );
     }
 
@@ -175,8 +175,8 @@ final class ParserTest extends TestCase
             ],
             (new Parser)->parse(
                 [],
-                'v'
-            )
+                'v',
+            ),
         );
     }
 
@@ -191,7 +191,7 @@ final class ParserTest extends TestCase
                 '--foo',
             ],
             '',
-            ['colors']
+            ['colors'],
         );
     }
 
@@ -206,7 +206,7 @@ final class ParserTest extends TestCase
                 'myArgument',
                 '-v',
             ],
-            ''
+            '',
         );
     }
 
@@ -221,7 +221,7 @@ final class ParserTest extends TestCase
                 '--foo',
             ],
             '',
-            ['foo=']
+            ['foo='],
         );
     }
 
@@ -236,7 +236,7 @@ final class ParserTest extends TestCase
                 'myArgument',
                 '-f',
             ],
-            'f:'
+            'f:',
         );
     }
 
@@ -251,7 +251,7 @@ final class ParserTest extends TestCase
                 '--col',
             ],
             '',
-            ['columns', 'colors']
+            ['columns', 'colors'],
         );
     }
 
@@ -266,7 +266,7 @@ final class ParserTest extends TestCase
                 '--foo=bar',
             ],
             '',
-            ['foo']
+            ['foo'],
         );
     }
 }
