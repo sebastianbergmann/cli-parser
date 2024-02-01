@@ -10,6 +10,7 @@
 namespace SebastianBergmann\CliParser;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Small;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(AmbiguousOptionException::class)]
@@ -17,6 +18,7 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Parser::class)]
 #[CoversClass(RequiredOptionArgumentMissingException::class)]
 #[CoversClass(UnknownOptionException::class)]
+#[Small]
 final class ParserTest extends TestCase
 {
     public function testParsesShortOptionsWithOptionalValues(): void
