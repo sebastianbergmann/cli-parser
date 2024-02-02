@@ -16,7 +16,6 @@
         "security": "https://github.com/sebastianbergmann/cli-parser/security/policy"
     },
     "prefer-stable": true,
-    "minimum-stability": "dev",
     "require": {
         "php": ">=8.2"
     },
