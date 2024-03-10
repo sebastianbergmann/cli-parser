@@ -14,6 +14,12 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * This component is no longer supported on PHP 8.1
 
+## [2.0.1] - 2024-03-02
+
+### Changed
+
+* Do not use implicitly nullable parameters
+
 ## [2.0.0] - 2023-02-03
 
 ### Removed
@@ -32,6 +38,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 [3.0.1]: https://github.com/sebastianbergmann/cli-parser/compare/3.0.0...3.0.1
 [3.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/2.0...3.0.0
+[2.0.1]: https://github.com/sebastianbergmann/cli-parser/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/1.0.1...2.0.0
 [1.0.1]: https://github.com/sebastianbergmann/cli-parser/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/bb7bb3297957927962b0a3335befe7b66f7462e9...1.0.0
