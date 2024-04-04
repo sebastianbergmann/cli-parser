@@ -53,7 +53,7 @@ final class Parser
         $options    = [];
         $nonOptions = [];
 
-        if ($longOptions) {
+        if ($longOptions !== null) {
             sort($longOptions);
         }
 
@@ -82,7 +82,7 @@ final class Parser
                 break;
             }
 
-            if ($arg[0] !== '-' || (strlen($arg) > 1 && $arg[1] === '-' && !$longOptions)) {
+            if ($arg[0] !== '-' || (strlen($arg) > 1 && $arg[1] === '-' && $longOptions === null)) {
                 $nonOptions[] = $arg;
 
                 continue;
@@ -135,7 +135,7 @@ final class Parser
                 if (!(strlen($spec) > 2 && $spec[2] === ':')) {
                     $optionArgument = current($argv);
 
-                    if (!$optionArgument) {
+                    if ($optionArgument === false) {
                         throw new RequiredOptionArgumentMissingException('-' . $option);
                     }
 
@@ -191,7 +191,7 @@ final class Parser
 
                     next($argv);
                 }
-            } elseif ($optionArgument) {
+            } elseif ($optionArgument !== null) {
                 throw new OptionDoesNotAllowArgumentException('--' . $option);
             }
 
