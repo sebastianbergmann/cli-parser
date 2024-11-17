@@ -19,7 +19,6 @@ use function current;
 use function explode;
 use function is_array;
 use function is_int;
-use function is_string;
 use function key;
 use function next;
 use function preg_replace;
@@ -141,8 +140,6 @@ final class Parser
                     if ($optionArgument === false) {
                         throw new RequiredOptionArgumentMissingException('-' . $option);
                     }
-
-                    assert(is_string($optionArgument));
 
                     next($argv);
                 }
