@@ -11,6 +11,7 @@ namespace SebastianBergmann\CliParser;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Small;
+use PHPUnit\Framework\Attributes\TestDox;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(AmbiguousOptionException::class)]
@@ -168,7 +169,7 @@ final class ParserTest extends TestCase
         );
     }
 
-    public function testReturnsEmptyResultWhenNonOptionsArePassed(): void
+    public function testReturnsEmptyResultWhenNoOptionsAreConfiguredAndNoOptionsArePassed(): void
     {
         $this->assertSame(
             [
@@ -177,7 +178,34 @@ final class ParserTest extends TestCase
             ],
             (new Parser)->parse(
                 [],
-                'v',
+                '',
+            ),
+        );
+    }
+
+    #[TestDox('Returns list of non-options after --')]
+    public function testReturnsListOfNonOptions(): void
+    {
+        $this->assertSame(
+            [
+                [
+                    [
+                        '--foo',
+                        null,
+                    ],
+                ],
+                ['bar'],
+            ],
+            (new Parser)->parse(
+                [
+                    '--foo',
+                    '--',
+                    'bar',
+                ],
+                '',
+                [
+                    'foo',
+                ],
             ),
         );
     }
