@@ -42,7 +42,7 @@ final class Parser
      * @throws RequiredOptionArgumentMissingException
      * @throws UnknownOptionException
      *
-     * @return array{0: list<array{0: non-empty-string, 1: ?non-empty-string}>, 1: list<non-empty-string>}
+     * @return array{0: list<array{0: string, 1: ?string}>, 1: list<string>}
      */
     public function parse(array $argv, string $shortOptions, ?array $longOptions = null): array
     {
@@ -111,8 +111,8 @@ final class Parser
     }
 
     /**
-     * @param list<array{0: non-empty-string, 1: ?non-empty-string}> $options
-     * @param list<string>                                           $argv
+     * @param list<array{0: string, 1: ?string}> $options
+     * @param list<string>                       $argv
      *
      * @throws RequiredOptionArgumentMissingException
      */
@@ -153,9 +153,9 @@ final class Parser
     }
 
     /**
-     * @param list<string>                                           $longOptions
-     * @param list<array{0: non-empty-string, 1: ?non-empty-string}> $options
-     * @param list<string>                                           $argv
+     * @param list<string>                       $longOptions
+     * @param list<array{0: string, 1: ?string}> $options
+     * @param list<string>                       $argv
      *
      * @throws AmbiguousOptionException
      * @throws OptionDoesNotAllowArgumentException
