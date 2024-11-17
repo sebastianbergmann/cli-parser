@@ -168,7 +168,7 @@ final class ParserTest extends TestCase
         );
     }
 
-    public function testReturnsEmptyResultWhenNotOptionsArePassed(): void
+    public function testReturnsEmptyResultWhenNonOptionsArePassed(): void
     {
         $this->assertSame(
             [
