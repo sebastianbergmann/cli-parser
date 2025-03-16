@@ -167,6 +167,7 @@ final class Parser
         $optionArgument = null;
 
         if (count($list) > 1) {
+            /** @phpstan-ignore offsetAccess.notFound */
             $optionArgument = $list[1];
         }
 
@@ -181,7 +182,11 @@ final class Parser
 
             $opt_rest = substr($longOption, $optionLength);
 
-            if ($opt_rest !== '' && $i + 1 < $count && $option[0] !== '=' && str_starts_with($longOptions[$i + 1], $option)) {
+            if ($opt_rest !== '' &&
+                $i + 1 < $count &&
+                $option[0] !== '=' &&
+                /** @phpstan-ignore offsetAccess.notFound */
+                str_starts_with($longOptions[$i + 1], $option)) {
                 throw new AmbiguousOptionException('--' . $option);
             }
 
