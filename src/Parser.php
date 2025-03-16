@@ -45,7 +45,7 @@ final class Parser
      */
     public function parse(array $argv, string $shortOptions, ?array $longOptions = null): array
     {
-        if (empty($argv)) {
+        if ($argv === []) {
             return [[], []];
         }
 
@@ -186,7 +186,7 @@ final class Parser
             }
 
             if (str_ends_with($longOption, '=')) {
-                if (!str_ends_with($longOption, '==') && !strlen((string) $optionArgument)) {
+                if (!str_ends_with($longOption, '==') && (string) $optionArgument === '') {
                     if (false === $optionArgument = current($argv)) {
                         throw new RequiredOptionArgumentMissingException('--' . $option);
                     }
