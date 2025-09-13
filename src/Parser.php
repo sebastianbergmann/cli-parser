@@ -23,6 +23,7 @@ use function key;
 use function next;
 use function preg_replace;
 use function reset;
+use function rtrim;
 use function sort;
 use function str_ends_with;
 use function str_starts_with;
@@ -186,8 +187,17 @@ final class Parser
                 $i + 1 < $count &&
                 $option[0] !== '=' &&
                 /** @phpstan-ignore offsetAccess.notFound */
-                str_starts_with($longOptions[$i + 1], $option)) {
-                throw new AmbiguousOptionException('--' . $option);
+                str_starts_with($longOptions[$i + 1], $option)
+            ) {
+                $candidates = [];
+
+                foreach ($longOptions as $aLongOption) {
+                    if (str_starts_with($aLongOption, $option)) {
+                        $candidates[] = '--' . rtrim($aLongOption, '=');
+                    }
+                }
+
+                throw new AmbiguousOptionException('--' . $option, $candidates);
             }
 
             if (str_ends_with($longOption, '=')) {
