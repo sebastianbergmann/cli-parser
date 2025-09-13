@@ -273,7 +273,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionWhenLongOptionIsAmbiguous(): void
     {
         $this->expectException(AmbiguousOptionException::class);
-        $this->expectExceptionMessage('Option "--col" is ambiguous');
+        $this->expectExceptionMessage('Option "--col" is ambiguous. Similar options are: --colors, --columns');
 
         (new Parser)->parse(
             [
