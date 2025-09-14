@@ -20,6 +20,7 @@ use function explode;
 use function is_array;
 use function is_int;
 use function key;
+use function levenshtein;
 use function next;
 use function preg_replace;
 use function reset;
@@ -30,6 +31,7 @@ use function str_starts_with;
 use function strlen;
 use function strstr;
 use function substr;
+use function usort;
 
 final class Parser
 {
@@ -125,7 +127,7 @@ final class Parser
             $optionArgument = null;
 
             if ($argument[$i] === ':' || ($spec = strstr($shortOptions, $option)) === false) {
-                throw new UnknownOptionException('-' . $option);
+                throw new UnknownOptionException('-' . $option, []);
             }
 
             if (strlen($spec) > 1 && $spec[1] === ':') {
@@ -174,7 +176,13 @@ final class Parser
 
         $optionLength = strlen($option);
 
+        $similarOptions = [];
+
         foreach ($longOptions as $i => $longOption) {
+            $similarOptions[] = [
+                levenshtein($longOption, $option),
+                '--' . rtrim($longOption, '='),
+            ];
             $opt_start = substr($longOption, 0, $optionLength);
 
             if ($opt_start !== $option) {
@@ -218,6 +226,27 @@ final class Parser
             return;
         }
 
-        throw new UnknownOptionException('--' . $option);
+        throw new UnknownOptionException('--' . $option, $this->formatSimilarOptions($similarOptions));
+    }
+
+    /**
+     * @param list<array{int, string}> $similarOptions
+     *
+     * @return array<string>
+     */
+    private function formatSimilarOptions(array $similarOptions): array
+    {
+        usort($similarOptions, static function (array $a, array $b)
+        {
+            return $a[0] <=> $b[0];
+        });
+
+        $similarFormatted = [];
+
+        foreach (array_slice($similarOptions, 0, 5) as [$distance, $label]) {
+            $similarFormatted[] = $label;
+        }
+
+        return $similarFormatted;
     }
 }

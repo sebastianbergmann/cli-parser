@@ -213,7 +213,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionForUnknownLongOption(): void
     {
         $this->expectException(UnknownOptionException::class);
-        $this->expectExceptionMessage('Unknown option "--foo"');
+        $this->expectExceptionMessage('Unknown option "--foo". Most similar options are --colors');
 
         (new Parser)->parse(
             [
@@ -222,6 +222,21 @@ final class ParserTest extends TestCase
             ],
             '',
             ['colors'],
+        );
+    }
+
+    public function testRaisesAnExceptionForUnknownLongOptionMultipleAlternatives(): void
+    {
+        $this->expectException(UnknownOptionException::class);
+        $this->expectExceptionMessage('Unknown option "--foo". Most similar options are --colors, --exec, --help, --config, --column');
+
+        (new Parser)->parse(
+            [
+                'command',
+                '--foo',
+            ],
+            '',
+            ['colors', 'columns', 'verbose', 'help', 'version', 'output', 'config', 'exec'],
         );
     }
 
