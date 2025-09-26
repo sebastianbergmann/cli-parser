@@ -8,6 +8,7 @@ name: CI
 
 env:
   COMPOSER_ROOT_VERSION: 2.0.x-dev
+  PHP_VERSION: 8.4
 
 permissions:
   contents: read
@@ -26,8 +27,9 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.4
+          php-version: ${{ env.PHP_VERSION }}
           coverage: none
+          tools: none
 
       - name: Run PHP-CS-Fixer
         run: ./tools/php-cs-fixer fix --dry-run --show-progress=dots --using-cache=no --verbose
@@ -47,6 +49,7 @@ jobs:
         with:
           php-version: 8.3
           coverage: none
+          tools: none
 
       - name: Install dependencies with Composer
         run: ./tools/composer update --no-interaction --no-ansi --no-progress
@@ -78,7 +81,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          coverage: xdebug
+          coverage: none
+          tools: none
 
       - name: Get Composer cache directory
         id: composer-cache
@@ -97,9 +101,58 @@ jobs:
         run: ./tools/composer update --no-ansi --no-interaction --no-progress
 
       - name: Run tests with PHPUnit
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        run: vendor/bin/phpunit
 
-      - name: Send code coverage report to Codecov.io
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: bash <(curl -s https://codecov.io/bash) || true
+  code-coverage:
+    name: Code Coverage
+
+    needs:
+      - tests
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install PHP with extensions
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          tools: none
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        shell: bash
+        run: |
+          echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Composer cache directory
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies with Composer
+        run: ./tools/composer update --no-ansi --no-interaction --no-progress
+
+      - name: Collect code coverage with PHPUnit
+        run: vendor/bin/phpunit --log-junit test-results.xml --coverage-clover=code-coverage.xml
+
+      - name: Upload test results to Codecov.io
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          disable_search: true
+          files: ./test-results.xml
+
+      - name: Upload code coverage data to Codecov.io
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          disable_search: true
+          files: ./code-coverage.xml
