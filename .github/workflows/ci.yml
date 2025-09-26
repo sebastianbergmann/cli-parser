@@ -17,6 +17,7 @@ jobs:
     name: Coding Guidelines
 
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
@@ -35,6 +36,7 @@ jobs:
     name: Type Checker
 
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
       - name: Checkout
@@ -56,6 +58,7 @@ jobs:
     name: Tests
 
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     strategy:
       fail-fast: false
