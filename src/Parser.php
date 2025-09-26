@@ -37,12 +37,12 @@ final class Parser
      * @psalm-param list<string> $argv
      * @psalm-param list<string> $longOptions
      *
-     * @psalm-return array{0: array, 1: array}
-     *
      * @throws AmbiguousOptionException
      * @throws OptionDoesNotAllowArgumentException
      * @throws RequiredOptionArgumentMissingException
      * @throws UnknownOptionException
+     *
+     * @psalm-return array{0: array, 1: array}
      */
     public function parse(array $argv, string $shortOptions, ?array $longOptions = null): array
     {
