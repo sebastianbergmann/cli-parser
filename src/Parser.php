@@ -65,7 +65,7 @@ final readonly class Parser
 
         reset($argv);
 
-        $argv = array_map('trim', $argv);
+        $argv = array_map(trim(...), $argv);
 
         while (false !== $arg = current($argv)) {
             $i = key($argv);
@@ -236,10 +236,7 @@ final readonly class Parser
     {
         usort(
             $similarOptions,
-            static function (array $a, array $b): int
-            {
-                return $a[0] <=> $b[0];
-            },
+            static fn (array $a, array $b): int => $a[0] <=> $b[0],
         );
 
         $similarFormatted = [];
