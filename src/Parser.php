@@ -33,7 +33,7 @@ use function strstr;
 use function substr;
 use function usort;
 
-final class Parser
+final readonly class Parser
 {
     /**
      * @param list<string> $argv
