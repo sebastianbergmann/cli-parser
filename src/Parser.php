@@ -236,7 +236,7 @@ final readonly class Parser
     {
         usort(
             $similarOptions,
-            static function (array $a, array $b)
+            static function (array $a, array $b): int
             {
                 return $a[0] <=> $b[0];
             },
