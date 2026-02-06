@@ -66,7 +66,7 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 
 * Initial release
 
-[5.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/4.2.0...main
+[5.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/4.2...5.0.0
 [4.2.0]: https://github.com/sebastianbergmann/cli-parser/compare/4.1.0...4.2.0
 [4.1.0]: https://github.com/sebastianbergmann/cli-parser/compare/4.0.0...4.1.0
 [4.0.0]: https://github.com/sebastianbergmann/cli-parser/compare/3.0...4.0.0
