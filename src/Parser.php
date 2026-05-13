@@ -172,7 +172,6 @@ final readonly class Parser
         $optionArgument = null;
 
         if (count($list) > 1) {
-            /** @phpstan-ignore offsetAccess.notFound */
             $optionArgument = $list[1];
         }
 
