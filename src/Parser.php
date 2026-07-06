@@ -37,7 +37,7 @@ final readonly class Parser
 {
     /**
      * @param list<string> $argv
-     * @param list<string> $longOptions
+     * @param list<string>|null $longOptions
      *
      * @throws AmbiguousOptionException
      * @throws OptionDoesNotAllowArgumentException
