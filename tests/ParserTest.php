@@ -285,6 +285,89 @@ final class ParserTest extends TestCase
         );
     }
 
+    public function testParsesLongOptionThatIsSpelledOutInFullWhenAnotherLongOptionBeginsWithIt(): void
+    {
+        $this->assertSame(
+            [
+                [
+                    ['--html', '/tmp/report'],
+                ],
+                [],
+            ],
+            (new Parser)->parse(
+                [
+                    'command',
+                    '--html',
+                    '/tmp/report',
+                ],
+                '',
+                ['html=', 'html-views='],
+            ),
+        );
+    }
+
+    public function testParsesLongOptionThatBeginsWithAnotherLongOptionThatIsSpelledOutInFull(): void
+    {
+        $this->assertSame(
+            [
+                [
+                    ['--html-views', 'class'],
+                ],
+                [],
+            ],
+            (new Parser)->parse(
+                [
+                    'command',
+                    '--html-views',
+                    'class',
+                ],
+                '',
+                ['html=', 'html-views='],
+            ),
+        );
+    }
+
+    public function testParsesLongOptionThatIsSpelledOutInFullWhenAnotherLongOptionBeginsWithItAndNeitherTakesAnArgument(): void
+    {
+        $this->assertSame(
+            [
+                [
+                    ['--verbose', null],
+                ],
+                [],
+            ],
+            (new Parser)->parse(
+                [
+                    'command',
+                    '--verbose',
+                ],
+                '',
+                ['verbose', 'verbose-output'],
+            ),
+        );
+    }
+
+    public function testStillAbbreviatesLongOptionThatIsNotSpelledOutInFull(): void
+    {
+        $this->assertSame(
+            [
+                [
+                    ['--html-views', 'class'],
+                ],
+                [],
+            ],
+            (new Parser)->parse(
+                [
+                    'command',
+                    '--html-v',
+                    'class',
+                ],
+                '',
+                ['html=', 'html-views='],
+            ),
+        );
+    }
+
     public function testRaisesAnExceptionWhenLongOptionIsAmbiguous(): void
     {
         $this->expectException(AmbiguousOptionException::class);
