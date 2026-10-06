@@ -265,7 +265,7 @@ final readonly class Parser
 
         $similarFormatted = [];
 
-        foreach (array_slice($similarOptions, 0, 5) as [$distance, $label]) {
+        foreach (array_slice($similarOptions, 0, 5) as [, $label]) {
             $similarFormatted[] = $label;
         }
 
