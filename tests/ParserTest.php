@@ -213,7 +213,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionForUnknownLongOption(): void
     {
         $this->expectException(UnknownOptionException::class);
-        $this->expectExceptionMessage('Unknown option "--foo". Most similar options are --colors');
+        $this->expectExceptionMessageIs('Unknown option "--foo". Most similar options are --colors');
 
         (new Parser)->parse(
             [
@@ -228,7 +228,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionForUnknownLongOptionMultipleAlternatives(): void
     {
         $this->expectException(UnknownOptionException::class);
-        $this->expectExceptionMessage('Unknown option "--foo". Most similar options are --colors, --exec, --help, --config, --column');
+        $this->expectExceptionMessageIs('Unknown option "--foo". Most similar options are --colors, --exec, --help, --config, --columns');
 
         (new Parser)->parse(
             [
@@ -243,7 +243,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionForUnknownShortOption(): void
     {
         $this->expectException(UnknownOptionException::class);
-        $this->expectExceptionMessage('Unknown option "-v"');
+        $this->expectExceptionMessageIs('Unknown option "-v"');
 
         (new Parser)->parse(
             [
@@ -258,7 +258,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionWhenRequiredArgumentForLongOptionIsMissing(): void
     {
         $this->expectException(RequiredOptionArgumentMissingException::class);
-        $this->expectExceptionMessage('Required argument for option "--foo" is missing');
+        $this->expectExceptionMessageIs('Required argument for option "--foo" is missing');
 
         (new Parser)->parse(
             [
@@ -273,7 +273,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionWhenRequiredArgumentForShortOptionIsMissing(): void
     {
         $this->expectException(RequiredOptionArgumentMissingException::class);
-        $this->expectExceptionMessage('Required argument for option "-f" is missing');
+        $this->expectExceptionMessageIs('Required argument for option "-f" is missing');
 
         (new Parser)->parse(
             [
@@ -371,7 +371,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionWhenLongOptionIsAmbiguous(): void
     {
         $this->expectException(AmbiguousOptionException::class);
-        $this->expectExceptionMessage('Option "--col" is ambiguous. Similar options are: --colors, --columns');
+        $this->expectExceptionMessageIs('Option "--col" is ambiguous. Similar options are: --colors, --columns');
 
         (new Parser)->parse(
             [
@@ -386,7 +386,7 @@ final class ParserTest extends TestCase
     public function testRaisesAnExceptionWhenAnArgumentIsGivenForLongOptionThatDoesNotAllowAnArgument(): void
     {
         $this->expectException(OptionDoesNotAllowArgumentException::class);
-        $this->expectExceptionMessage('Option "--foo" does not allow an argument');
+        $this->expectExceptionMessageIs('Option "--foo" does not allow an argument');
 
         (new Parser)->parse(
             [
